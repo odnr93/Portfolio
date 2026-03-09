@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez Odnerson ORIENTALE - Étudiant BTS SIO SLAM.">
+  <title>Contact — Odnerson ORIENTALE</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="logo">O<span class="accent">.</span>ORIENTALE</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="skills.html">Compétences</a></li>
+      <li><a href="projects.html">Projets</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero reveal">
+      <div class="section-label">05 — Contact</div>
+      <h1>Contactez-<span class="accent">moi</span></h1>
+    </div>
+
+    <div class="section">
+      <p class="contact-sub reveal">Une question, une opportunité de stage ? N'hésitez pas !</p>
+
+      <form id="contact-form" class="contact-form reveal" action="https://formspree.io/f/VOTRE_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Votre Nom</label>
+            <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input type="email" id="email" name="email" placeholder="jean@exemple.fr" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Votre Message</label>
+          <textarea id="message" name="message" placeholder="Bonjour, je souhaite..." rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <span>Envoyer le message</span> <span class="icon">→</span>
+        </button>
+        <p class="form-notice" id="form-notice"></p>
+      </form>
+    </div>
+  </div>
+
+<div class="page-nav">
+  <a href="certifications.html" class="nav-prev"><i class="fas fa-arrow-left"></i> Précedent</a>
+  <span class="page-nav-spacer"></span>
+</div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">O<span class="accent">.</span>ORIENTALE</p>
+      <div class="footer-socials">
+        <a href="https://github.com/" target="_blank" aria-label="GitHub"><span class="icon-social">GH</span></a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><span class="icon-social">in</span></a>
+        <a href="mailto:odnersonorientale@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; 2025 Odnerson ORIENTALE. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+/* =============================================
+   CERTIFICATIONS.CSS — Page Certifications
+   ============================================= */
+
+/* Carte de certification */
+.certification-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.certification-container:hover {
+  border-color: rgba(255, 102, 0, 0.35);
+  transform: translateY(-3px);
+}
+
+/* Colonne gauche : icône + badge */
+.certif-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.certif-icon-wrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2a1500, #5a2800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certif-icon {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.certif-badge {
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.certif-badge-blue {
+  background: #1a73e8;
+}
+
+/* Colonne droite : contenu */
+.certif-body {
+  flex: 1;
+}
+
+.certif-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.certif-org {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.certif-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.certif-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.certif-body p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Badges thématiques */
+.certif-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.certif-tags span {
+  background: rgba(255, 102, 0, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Boutons d'action */
+.certif-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-certif-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-certif-preview:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 102, 0, 0.05);
+}
+
+.btn-certif-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-certif-dl:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== MODAL PDF ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.modal-pdf-container {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 500px;
+}
+
+.modal-pdf-container canvas {
+  max-width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-nav {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.modal-nav button {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  transition: all var(--transition);
+}
+
+.modal-nav button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.modal-nav span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .certification-container {
+    flex-direction: column;
+  }
+
+  .certif-left {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .modal-pdf-container {
+    min-height: 350px;
+  }
+}
+
+/* Variante bleue de l'icône (SensCyber) */
+.certif-icon-wrap--blue {
+  background: linear-gradient(135deg, #1a2a4a, #0d1b36);
+}
+
+/* Icônes dans l'en-tête du modal */
+.certif-modal-icon {
+  margin-right: 0.5rem;
+}
+
+.certif-modal-icon--orange {
+  color: var(--accent);
+}
+
+.certif-modal-icon--blue {
+  color: #1a73e8;
+}
