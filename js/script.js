@@ -33,14 +33,15 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // ===== SCROLL REVEAL =====
 document.querySelectorAll('.reveal').forEach(el => {
-  new IntersectionObserver((entries, obs) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }).observe(el);
+  }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
+  observer.observe(el);
 });
 
 // ===== PDF MODAL (using PDF.js) =====

@@ -5,8 +5,230 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Projets d'Odnerson ORIENTALE - Développement web et applications.">
   <title>Projets — Odnerson ORIENTALE</title>
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/projects.css">
+  <style>
+/* =============================================
+   GLOBAL.CSS
+   ============================================= */
+:root {
+  --accent: #ff6600;
+  --accent-hover: #ff4500;
+  --bg: #0d0d0d;
+  --bg-card: #161616;
+  --bg-card-hover: #1e1e1e;
+  --text: #f0f0f0;
+  --text-muted: #888;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 12px;
+  --transition: 0.3s ease;
+  --font-display: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: var(--bg); overflow-x: hidden; }
+.accent { color: var(--accent); }
+
+nav {
+  position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem;
+  background: rgba(13,13,13,0.97);
+  border-bottom: 1px solid var(--border);
+}
+.logo { font-size: 1.3rem; font-weight: 800; text-decoration: none; color: var(--text); letter-spacing: 1px; }
+.nav-links { list-style: none; display: flex; gap: 0.2rem; }
+.nav-links li a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.92rem;
+  font-weight: 500; padding: 0.4rem 0.85rem; border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
+}
+.nav-links li a:hover, .nav-links li a.active { color: var(--accent); background: rgba(255,102,0,0.08); }
+
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
+.hamburger span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: all var(--transition); }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.page-wrapper { padding-top: 70px; min-height: 100vh; }
+.page-hero { padding: 4rem 2rem 2.5rem; max-width: 1100px; margin: 0 auto 3rem; border-bottom: 1px solid var(--border); }
+.section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+.page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; }
+.section { padding: 2rem 2rem 5rem; max-width: 1100px; margin: 0 auto; }
+
+/* SCROLL REVEAL — visible par défaut, JS l'anime si actif */
+.reveal { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s ease; }
+.js-loaded .reveal { opacity: 0; transform: translateY(24px); }
+.js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent); color: #fff; padding: 0.7rem 1.6rem;
+  border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+footer { background: #080808; border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+.footer-inner { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; }
+.footer-logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 1px; }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-socials a { color: var(--text-muted); font-size: 1.4rem; text-decoration: none; transition: color var(--transition); }
+.footer-socials a:hover { color: var(--accent); }
+footer p { color: var(--text-muted); font-size: 0.82rem; }
+
+.icon { display: inline-block; font-style: normal; font-size: 1em; line-height: 1; }
+
+.icon-social {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid var(--border); font-size: 0.75rem; font-weight: 700;
+  color: var(--text-muted); text-decoration: none;
+  transition: all var(--transition); letter-spacing: 0;
+}
+a:has(.icon-social):hover .icon-social,
+.footer-socials a:hover .icon-social { border-color: var(--accent); color: var(--accent); }
+.footer-socials a { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: transform var(--transition); }
+.footer-socials a:hover { transform: translateY(-3px); }
+
+.page-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem; gap: 1rem;
+}
+.page-nav a {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.75rem 1.6rem; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 500; text-decoration: none;
+  border: 1px solid var(--border); color: var(--text-muted);
+  background: var(--bg-card); transition: all var(--transition);
+}
+.page-nav a:hover { border-color: var(--accent); color: var(--accent); background: rgba(255,102,0,0.05); transform: translateY(-2px); }
+.page-nav a.nav-next { margin-left: auto; }
+.page-nav a.nav-prev { margin-right: auto; }
+
+@media (max-width: 768px) {
+  nav { padding: 0.9rem 1.2rem; }
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; width: 100%;
+    flex-direction: column; background: rgba(13,13,13,0.98);
+    border-top: 1px solid var(--border); padding: 0.8rem 0; gap: 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li a { display: block; padding: 0.75rem 1.5rem; border-radius: 0; font-size: 1rem; }
+  .section { padding: 1.5rem 1.2rem 3rem; }
+  .page-hero { padding: 3rem 1.2rem 2rem; }
+}
+
+/* =============================================
+   PROJECTS.CSS
+   ============================================= */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid-container { grid-template-columns: 1fr; }
+}
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+.project-preview {
+  background: linear-gradient(135deg, #1a1a1a, #222);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-icon { font-size: 3rem; opacity: 0.85; }
+
+.project-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.project-body p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.skill-tags span {
+  display: inline-block;
+  background: rgba(255, 102, 0, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(255, 102, 0, 0.2);
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.btn-sm {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent); color: #fff;
+  padding: 0.4rem 0.9rem; border-radius: 6px;
+  font-size: 0.82rem; font-weight: 500;
+  text-decoration: none; transition: background var(--transition);
+}
+.btn-sm:hover { background: var(--accent-hover); }
+
+.btn-sm.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.btn-sm.btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+  </style>
 </head>
 <body>
 
@@ -16,7 +238,7 @@
       <li><a href="index.html">Accueil</a></li>
       <li><a href="about.html">À propos</a></li>
       <li><a href="skills.html">Compétences</a></li>
-      <li><a href="projects.html">Projets</a></li>
+      <li><a href="projects.html" class="active">Projets</a></li>
       <li><a href="certifications.html">Certifications</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -34,14 +256,18 @@
     <div class="section">
       <div class="grid-container">
 
-        <div class="card project-card reveal">
+        <div class="project-card reveal">
           <div class="project-preview">
-            <div class="project-icon"><span class="icon-card">👥</span></div>
+            <div class="project-icon">👥</div>
           </div>
           <div class="project-body">
             <h3>Gestion Étudiants</h3>
             <p>Application de gestion complète avec système CRUD, authentification et tableaux de bord.</p>
-            <div class="skill-tags"><span>PHP</span><span>MySQL</span><span>HTML/CSS</span></div>
+            <div class="skill-tags">
+              <span>PHP</span>
+              <span>MySQL</span>
+              <span>HTML/CSS</span>
+            </div>
             <div class="project-links">
               <a href="#" class="btn-sm"><span class="icon-social">GH</span> GitHub</a>
               <a href="#" class="btn-sm btn-outline"><span class="icon">↗</span> Demo</a>
@@ -49,14 +275,18 @@
           </div>
         </div>
 
-        <div class="card project-card reveal">
+        <div class="project-card reveal">
           <div class="project-preview">
-            <div class="project-icon"><span class="icon-card">💻</span></div>
+            <div class="project-icon">💻</div>
           </div>
           <div class="project-body">
             <h3>Portfolio dynamique</h3>
             <p>Site web personnel interactif avec animations CSS, responsive design et formulaire de contact.</p>
-            <div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <div class="skill-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
             <div class="project-links">
               <a href="#" class="btn-sm"><span class="icon-social">GH</span> GitHub</a>
               <a href="#" class="btn-sm btn-outline"><span class="icon">↗</span> Demo</a>
@@ -64,14 +294,18 @@
           </div>
         </div>
 
-        <div class="card project-card reveal">
+        <div class="project-card reveal">
           <div class="project-preview">
-            <div class="project-icon"><span class="icon-card">🔢</span></div>
+            <div class="project-icon">🛍️</div>
           </div>
           <div class="project-body">
-            <h3>Calculatrice JS</h3>
-            <p>Application web calculatrice avec interface moderne, historique de calculs et raccourcis clavier.</p>
-            <div class="skill-tags"><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+            <h3>Shopify VTO</h3>
+            <p>Application Shopify de Virtual Try-On permettant aux clients d'essayer des produits en réalité augmentée avant l'achat.</p>
+            <div class="skill-tags">
+              <span>Shopify</span>
+              <span>JavaScript</span>
+              <span>AR/WebXR</span>
+            </div>
             <div class="project-links">
               <a href="#" class="btn-sm"><span class="icon-social">GH</span> GitHub</a>
               <a href="#" class="btn-sm btn-outline"><span class="icon">↗</span> Demo</a>
@@ -83,10 +317,10 @@
     </div>
   </div>
 
-<div class="page-nav">
-  <a href="skills.html" class="nav-prev"><i class="fas fa-arrow-left"></i> Précedent</a>
-  <a href="certifications.html" class="nav-next">Suivant <i class="fas fa-arrow-right"></i></a>
-</div>
+  <div class="page-nav">
+    <a href="skills.html" class="nav-prev">← Précédent</a>
+    <a href="certifications.html" class="nav-next">Suivant →</a>
+  </div>
 
   <footer>
     <div class="footer-inner">
@@ -94,12 +328,12 @@
       <div class="footer-socials">
         <a href="https://github.com/" target="_blank" aria-label="GitHub"><span class="icon-social">GH</span></a>
         <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><span class="icon-social">in</span></a>
-        <a href="mailto:odnersonorientale@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="/cdn-cgi/l/email-protection#a3ccc7cdc6d1d0cccdccd1cac6cdd7c2cfc6e3c4cec2cacf8dc0ccce" aria-label="Email"><span class="icon-social">✉</span></a>
       </div>
-      <p>&copy; 2025 Odnerson ORIENTALE. Tous droits réservés.</p>
+      <p>&copy; 2026 Odnerson ORIENTALE. Tous droits réservés.</p>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
