@@ -19,6 +19,7 @@
       <li><a href="projects.html">Projets</a></li>
       <li><a href="certifications.html">Certifications</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="stage.html">Stage</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -90,7 +91,34 @@
           </div>
         </div>
       </div>
-
+      <!-- AFP_Module1 -->
+      <div class="certification-container reveal">
+        <div class="certif-left">
+          <div class="certif-icon-wrap">
+            <i class="fas fa-search-plus certif-icon"></i>
+          </div>
+          <div class="certif-badge">ID: m9vs4mexf0</div>
+        </div>
+        <div class="certif-body">
+          <div class="certif-meta">
+            <span class="certif-org">AFP — Google News Initiative</span>
+            <span class="certif-date"><span class="icon">📅</span> 9 avril 2025</span>
+          </div>
+          <h3>Affinez vos recherches pour n'obtenir que ce dont vous avez besoin</h3>
+          <p>Maîtrise des techniques avancées d'investigation numérique et optimisation des stratégies de recherche d'information en ligne.</p>
+          <div class="certif-tags">
+            <span>Investigation numérique</span><span>OSINT</span><span>Recherche avancée</span>
+          </div>
+          <div class="certif-actions">
+            <button class="btn-certif-preview" onclick="openModal('modal-afp', 'Orientale.Odnerson.mooc_AFP_module1.pdf')">
+              <span class="icon">👁</span> Aperçu
+            </button>
+            <a class="btn-certif-dl" href="Orientale.Odnerson.mooc_AFP_module1.pdf" download>
+              <span class="icon">📥</span> Télécharger
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -114,7 +142,6 @@
       </div>
     </div>
   </div>
-
   <!-- Modal Senscyber -->
   <div class="modal-overlay" id="modal-senscyber" onclick="closeModal('modal-senscyber')">
     <div class="modal-box" onclick="event.stopPropagation()">
@@ -135,6 +162,24 @@
       </div>
     </div>
   </div>
+  <!--Modal AFP-->
+  <div id="modal-afp" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span><i class="fas fa-search-plus certif-modal-icon--orange"></i> Aperçu Certification AFP</span>
+        <button class="modal-close" onclick="closeModal('modal-afp')">&times;</button>
+      </div>
+      <div id="modal-afp-canvas-container" class="modal-pdf-container"></div>
+      <div class="modal-footer">
+        <div class="modal-nav">
+          <button onclick="prevPage('modal-afp')">Précédent</button>
+          <span id="modal-afp-pageinfo">Page 1 / 1</span>
+          <button onclick="nextPage('modal-afp')">Suivant</button>
+        </div>
+        <a href="Orientale.Odnerson.mooc_AFP_module1.pdf" download class="btn-certif-dl">Télécharger</a>
+      </div>
+    </div>
+  </div>
 
 <div class="page-nav">
   <a href="projects.html" class="nav-prev"><i class="fas fa-arrow-left"></i>← Précedent</a>
@@ -145,9 +190,9 @@
     <div class="footer-inner">
       <p class="footer-logo">O<span class="accent">.</span>ORIENTALE</p>
       <div class="footer-socials">
-        <a href="https://github.com/" target="_blank"><span class="icon-social">GH</span></a>
-        <a href="https://linkedin.com/" target="_blank"><span class="icon-social">in</span></a>
-        <a href="mailto:odnersonorientale@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/odnr93" target="_blank" aria-label="GitHub"><span class="icon-social">GH</span></a>
+        <a href="https://www.linkedin.com/in/odnerson-orientale-b3405135a/" target="_blank" aria-label="LinkedIn"><span class="icon-social">in</span></a>
+        <a href="mailto:odnersonorientale@gmail.com" aria-label="Email"><span class="icon-social">✉</span></a>
       </div>
       <p>&copy; 2026 Odnerson ORIENTALE. Tous droits réservés.</p>
     </div>
