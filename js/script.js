@@ -25,9 +25,9 @@ if (hamburger && navLinks) {
 }
 
 // ===== ACTIVE NAV LINK (based on current page) =====
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const currentPage = decodeURIComponent(window.location.pathname.split('/').pop() || 'index.html');
 document.querySelectorAll('.nav-links a').forEach(link => {
-  const href = link.getAttribute('href');
+  const href = decodeURIComponent(link.getAttribute('href'));
   if (href === currentPage) link.classList.add('active');
 });
 
@@ -42,64 +42,6 @@ document.querySelectorAll('.reveal').forEach(el => {
     });
   }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
   observer.observe(el);
-});
-
-// ===== PDF MODAL (using PDF.js) =====
-let pdfDocs = {};
-let currentPages = {};
-
-async function openModal(modalId, pdfDataUri) {
-  const modal = document.getElementById(modalId);
-  if (!modal) return;
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-
-  if (!pdfDocs[modalId]) {
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    pdfDocs[modalId] = await pdfjsLib.getDocument(pdfDataUri).promise;
-    currentPages[modalId] = 1;
-  }
-  renderPage(modalId);
-}
-
-async function renderPage(modalId) {
-  const doc = pdfDocs[modalId];
-  const pageNum = currentPages[modalId];
-  const container = document.getElementById(modalId + '-canvas-container');
-  const pageInfo = document.getElementById(modalId + '-pageinfo');
-  if (!doc || !container) return;
-
-  container.innerHTML = '';
-  const page = await doc.getPage(pageNum);
-  const viewport = page.getViewport({ scale: 1.5 });
-  const canvas = document.createElement('canvas');
-  canvas.height = viewport.height;
-  canvas.width = viewport.width;
-  container.appendChild(canvas);
-  await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
-  if (pageInfo) pageInfo.textContent = `Page ${pageNum} / ${doc.numPages}`;
-}
-
-function prevPage(modalId) {
-  if (currentPages[modalId] > 1) { currentPages[modalId]--; renderPage(modalId); }
-}
-function nextPage(modalId) {
-  const doc = pdfDocs[modalId];
-  if (doc && currentPages[modalId] < doc.numPages) { currentPages[modalId]++; renderPage(modalId); }
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.active').forEach(m => {
-      m.classList.remove('active'); document.body.style.overflow = '';
-    });
-  }
 });
 
 // ===== CONTACT FORM =====
