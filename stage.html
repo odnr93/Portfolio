@@ -7,6 +7,7 @@
   <title>Stage — Odnerson ORIENTALE</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/stage.css">
+  <link rel="stylesheet" href="css/modal-gallery.css">
 </head>
 <body>
 
@@ -74,6 +75,36 @@
               </div>
             </div>
 
+            <!-- GALERIE D'IMAGES — 1ère année -->
+            <div class="stage-section">
+              <div class="stage-section-title">Aperçu de l'application</div>
+              <div class="stage-gallery" id="gallery-1">
+                <!--
+                  Remplacez les src ci-dessous par vos vraies captures d'écran.
+                  Exemple : src="img/stages/shopify-dashboard.png"
+                  Ajoutez ou supprimez des <div class="gallery-item"> selon le nombre d'images.
+                -->
+                <div class="gallery-item" data-gallery="1" data-index="0">
+                  <img src="" alt="Capture 1 — Stage 1" loading="lazy"
+                       onerror="this.parentElement.classList.add('placeholder')">
+                  <div class="gallery-placeholder-label">Capture 1</div>
+                  <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+                <div class="gallery-item" data-gallery="1" data-index="1">
+                  <img src="" alt="Capture 2 — Stage 1" loading="lazy"
+                       onerror="this.parentElement.classList.add('placeholder')">
+                  <div class="gallery-placeholder-label">Capture 2</div>
+                  <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+                <div class="gallery-item" data-gallery="1" data-index="2">
+                  <img src="" alt="Capture 3 — Stage 1" loading="lazy"
+                       onerror="this.parentElement.classList.add('placeholder')">
+                  <div class="gallery-placeholder-label">Capture 3</div>
+                  <div class="gallery-overlay"><span>🔍</span></div>
+                </div>
+              </div>
+            </div>
+
             <div class="stage-footer">
               <a href="#" class="btn-stage">
                 <span>Voir le rapport</span> <span class="icon">↗</span>
@@ -118,6 +149,16 @@
               </div>
             </div>
 
+            <!-- GALERIE D'IMAGES — 2ème année -->
+            <div class="stage-section">
+              <div class="stage-section-title">Aperçu de l'application</div>
+              <a href="galerie-stage2.html" class="btn-gallery-open">
+                <span class="btn-gallery-icon">🖼️</span>
+                <span>Voir les captures d'écran</span>
+                <span class="btn-gallery-count">Galerie →</span>
+              </a>
+            </div>
+
             <div class="stage-footer">
               <a href="#" class="btn-stage">
                 <span>Voir le rapport</span> <span class="icon">↗</span>
@@ -140,6 +181,19 @@
     </div><!-- /.section -->
   </div><!-- /.page-wrapper -->
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse d'image">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Précédent">‹</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Suivant">›</button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+  <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+
   <div class="page-nav">
     <a href="certifications.html" class="nav-prev">← Précédent</a>
     <a href="veille-technologique.html" class="nav-next">Suivant →</a>
@@ -151,12 +205,76 @@
       <div class="footer-socials">
         <a href="https://github.com/odnr93" target="_blank" aria-label="GitHub"><span class="icon-social">GH</span></a>
         <a href="https://www.linkedin.com/in/odnerson-orientale-b3405135a/" target="_blank" aria-label="LinkedIn"><span class="icon-social">in</span></a>
-        <a href="mailto:odnersonorientale@gmail.com" aria-label="Email"><span class="icon-social">✉</span></a>
+        <a href="/cdn-cgi/l/email-protection#ea858e848f989985848598838f849e8b868faa8d878b8386c4898587" aria-label="Email"><span class="icon-social">✉</span></a>
       </div>
       <p>&copy; 2026 Odnerson ORIENTALE. Tous droits réservés.</p>
     </div>
   </footer>
 
+  <!-- MODALE GALERIE — 2ème année -->
+  <div class="modal-gallery" id="modal-gallery-2" role="dialog" aria-modal="true" aria-label="Galerie captures 2ème année">
+    <div class="modal-gallery-backdrop" id="modal-gallery-backdrop"></div>
+    <div class="modal-gallery-container">
+
+      <div class="modal-gallery-header">
+        <div>
+          <h2 class="modal-gallery-title">Captures d'écran — 2ème année</h2>
+          <p class="modal-gallery-subtitle">Application réalisée durant le stage</p>
+        </div>
+        <button class="modal-gallery-close" id="modal-gallery-close" aria-label="Fermer la galerie">✕</button>
+      </div>
+
+      <div class="modal-gallery-viewer">
+        <button class="modal-nav modal-nav--prev" id="modal-prev" aria-label="Image précédente">‹</button>
+        <div class="modal-gallery-main">
+          <img src="" alt="" id="modal-main-img">
+        </div>
+        <button class="modal-nav modal-nav--next" id="modal-next" aria-label="Image suivante">›</button>
+      </div>
+
+      <div class="modal-gallery-info">
+        <p class="modal-gallery-caption" id="modal-caption"></p>
+        <span class="modal-gallery-counter" id="modal-counter"></span>
+      </div>
+
+      <div class="modal-gallery-thumbs" id="modal-thumbs">
+        <div class="modal-thumb active" data-index="0"
+             data-src="documents/Images/Stage/pagehome.png"
+             data-caption="Page d'accueil — Vue générale de l'application Shopify">
+          <img src="documents/Images/Stage/pagehome.png" alt="Page d'accueil Shopify" loading="lazy">
+        </div>
+        <div class="modal-thumb" data-index="1"
+             data-src="documents/Images/Stage/Stage-2eme/capture2.png"
+             data-caption="Tableau de bord — Aperçu des fonctionnalités clés">
+          <img src="documents/Images/Stage/Stage-2eme/capture2.png" alt="Capture 2" loading="lazy">
+        </div>
+        <div class="modal-thumb" data-index="2"
+             data-src="documents/Images/Stage/Stage-2eme/capture3.png"
+             data-caption="Formulaire de saisie — Interface utilisateur intuitive">
+          <img src="documents/Images/Stage/Stage-2eme/capture3.png" alt="Capture 3" loading="lazy">
+        </div>
+        <div class="modal-thumb" data-index="3"
+             data-src="documents/Images/Stage/Stage-2eme/capture4.png"
+             data-caption="Liste des données — Affichage et gestion des enregistrements">
+          <img src="documents/Images/Stage/Stage-2eme/capture4.png" alt="Capture 4" loading="lazy">
+        </div>
+        <div class="modal-thumb" data-index="4"
+             data-src="documents/Images/Stage/Stage-2eme/capture5.png"
+             data-caption="Gestion des utilisateurs — Administration des droits d'accès">
+          <img src="documents/Images/Stage/Stage-2eme/capture5.png" alt="Capture 5" loading="lazy">
+        </div>
+        <div class="modal-thumb" data-index="5"
+             data-src="documents/Images/Stage/Stage-2eme/capture6.png"
+             data-caption="Rapport / export — Génération de documents et statistiques">
+          <img src="documents/Images/Stage/Stage-2eme/capture6.png" alt="Capture 6" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <script src="js/script.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/modal-gallery.js"></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galerie captures d'écran — Stage 2ème année — Odnerson ORIENTALE">
+  <title>Galerie Stage 2ème année — Odnerson ORIENTALE</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/galerie-stage2.css">
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="logo">O<span class="accent">.</span>ORIENTALE</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="skills.html">Compétences</a></li>
+      <li><a href="projects.html">Projets</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="stage.html" class="active">Stage</a></li>
+      <li><a href="veille-technologique.html">Veille technologique</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="page-wrapper">
+
+    <div class="page-hero reveal">
+      <div class="section-label">06 — Expériences</div>
+      <h1>Galerie <span class="accent">2ème année</span></h1>
+      <p class="hero-desc">Captures d'écran de l'application réalisée durant le stage</p>
+      <a href="stage.html" class="btn-back">← Retour au stage</a>
+    </div>
+
+    <div class="section">
+
+      <div class="galerie-grid" id="galerie-grid">
+
+        <!--
+          =====================================================
+          AJOUTER UNE IMAGE : copiez un bloc .galerie-item
+          et modifiez src et data-caption.
+          =====================================================
+        -->
+
+        <div class="galerie-item reveal"
+             data-src="documents/Images/Stage/pagehome.png"
+             data-caption="Page d'accueil — Vue générale de l'application Shopify">
+          <div class="galerie-img-wrap">
+            <img src="documents/Images/Stage/pagehome.png" alt="Page d'accueil Shopify" loading="lazy">
+            <div class="galerie-overlay"><span>🔍</span></div>
+          </div>
+          <div class="galerie-caption">Page d'accueil — Vue générale de l'application Shopify</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="glightbox" id="glightbox">
+    <div class="glightbox-backdrop" id="glightbox-backdrop"></div>
+    <div class="glightbox-container">
+      <button class="glightbox-close" id="glightbox-close" aria-label="Fermer">✕</button>
+      <button class="glightbox-nav glightbox-prev" id="glightbox-prev" aria-label="Précédent">‹</button>
+      <div class="glightbox-main">
+        <img src="" alt="" id="glightbox-img">
+      </div>
+      <button class="glightbox-nav glightbox-next" id="glightbox-next" aria-label="Suivant">›</button>
+      <div class="glightbox-footer">
+        <p class="glightbox-caption" id="glightbox-caption"></p>
+        <span class="glightbox-counter" id="glightbox-counter"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-nav">
+    <a href="stage.html" class="nav-prev">← Stage</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">O<span class="accent">.</span>ORIENTALE</p>
+      <div class="footer-socials">
+        <a href="https://github.com/odnr93" target="_blank" aria-label="GitHub"><span class="icon-social">GH</span></a>
+        <a href="https://www.linkedin.com/in/odnerson-orientale-b3405135a/" target="_blank" aria-label="LinkedIn"><span class="icon-social">in</span></a>
+        <a href="mailto:odnersonorientale@gmail.com" aria-label="Email"><span class="icon-social">✉</span></a>
+      </div>
+      <p>&copy; 2026 Odnerson ORIENTALE. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/galerie-stage2.js"></script>
+</body>
+</html>
