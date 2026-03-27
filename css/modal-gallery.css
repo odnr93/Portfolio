@@ -1,52 +1,45 @@
 /* =============================================
-   BOUTON OUVRIR GALERIE
+   MODAL-GALLERY.CSS — Galerie modale 2ème année
+   Compatible avec le thème dark + accent #ff6600
    ============================================= */
 
+/* ── Bouton déclencheur ─────────────────────────────────────────────────── */
 .btn-gallery-open {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  width: 100%;
-  background: rgba(26, 115, 232, 0.07);
-  color: var(--text);
-  border: 1px dashed rgba(26, 115, 232, 0.35);
+  gap: 0.6rem;
+  background: rgba(26, 115, 232, 0.08);
+  color: #1a73e8;
+  border: 1px solid rgba(26, 115, 232, 0.25);
+  padding: 0.65rem 1.2rem;
   border-radius: 10px;
-  padding: 0.85rem 1.2rem;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.25s ease;
-  text-align: left;
+  width: 100%;
+  justify-content: center;
 }
 
 .btn-gallery-open:hover {
-  background: rgba(26, 115, 232, 0.14);
-  border-color: rgba(26, 115, 232, 0.6);
-  border-style: solid;
+  background: rgba(26, 115, 232, 0.15);
+  border-color: rgba(26, 115, 232, 0.5);
   transform: translateY(-2px);
 }
 
 .btn-gallery-icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
+  font-size: 1rem;
 }
 
 .btn-gallery-count {
   margin-left: auto;
-  font-size: 0.75rem;
-  color: #1a73e8;
-  background: rgba(26, 115, 232, 0.12);
-  border: 1px solid rgba(26, 115, 232, 0.2);
-  padding: 0.15rem 0.6rem;
-  border-radius: 50px;
-  font-weight: 600;
+  font-size: 0.78rem;
+  opacity: 0.7;
   letter-spacing: 0.5px;
 }
 
-/* =============================================
-   MODALE GALERIE
-   ============================================= */
-
+/* ── Modale — fond ──────────────────────────────────────────────────────── */
 .modal-gallery {
   position: fixed;
   inset: 0;
@@ -57,197 +50,219 @@
   padding: 1.5rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transform: scale(0.97) translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .modal-gallery.active {
   opacity: 1;
   pointer-events: all;
+  transform: scale(1) translateY(0);
 }
 
 .modal-gallery-backdrop {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  z-index: -1;
+  cursor: pointer;
 }
 
+/* ── Conteneur principal ────────────────────────────────────────────────── */
 .modal-gallery-container {
-  position: relative;
-  z-index: 1;
-  background: var(--bg-card, #111);
-  border: 1px solid rgba(26, 115, 232, 0.2);
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   width: 100%;
-  max-width: 860px;
+  max-width: 900px;
   max-height: 90vh;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  transform: translateY(16px) scale(0.98);
-  transition: transform 0.3s ease;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  gap: 0;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-.modal-gallery.active .modal-gallery-container {
-  transform: translateY(0) scale(1);
+.modal-gallery-container::-webkit-scrollbar {
+  width: 4px;
+}
+.modal-gallery-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
-/* En-tête de la modale */
+/* ── En-tête ────────────────────────────────────────────────────────────── */
 .modal-gallery-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 1.6rem;
-  border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+  justify-content: space-between;
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   flex-shrink: 0;
 }
 
 .modal-gallery-title {
-  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text);
+  color: #ffffff;
   margin: 0 0 0.2rem;
+  letter-spacing: -0.2px;
 }
 
 .modal-gallery-subtitle {
-  font-size: 0.78rem;
-  color: var(--text-muted, rgba(255,255,255,0.45));
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
   margin: 0;
 }
 
+/* Bouton fermer */
 .modal-gallery-close {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .modal-gallery-close:hover {
-  background: rgba(220, 50, 50, 0.3);
+  background: rgba(255, 102, 0, 0.2);
+  border-color: rgba(255, 102, 0, 0.35);
+  color: #ff6600;
   transform: rotate(90deg);
 }
 
-/* Zone visionneuse */
+/* ── Viewer principal (image + flèches) ─────────────────────────────────── */
 .modal-gallery-viewer {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 1rem 0.5rem;
+  gap: 0.8rem;
+  padding: 1.2rem 1.8rem;
   flex-shrink: 0;
 }
 
 .modal-gallery-main {
   flex: 1;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
-  max-height: 42vh;
-  background: rgba(0,0,0,0.3);
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06);
 }
 
-#modal-main-img {
-  max-width: 100%;
-  max-height: 42vh;
+.modal-gallery-main img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  border-radius: 8px;
   display: block;
+  transition: opacity 0.25s ease;
 }
 
+/* Flèches de navigation */
 .modal-nav {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.13);
-  color: #fff;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  font-size: 1.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
   line-height: 1;
 }
 
-.modal-nav:hover {
-  background: rgba(26, 115, 232, 0.3);
+.modal-nav:hover:not(:disabled) {
+  background: rgba(255, 102, 0, 0.18);
+  border-color: rgba(255, 102, 0, 0.4);
+  color: #ff6600;
   transform: scale(1.1);
 }
 
 .modal-nav:disabled {
-  opacity: 0.25;
+  opacity: 0.2;
   cursor: default;
   transform: none;
 }
 
-/* Légende + compteur */
+/* ── Infos (légende + compteur) ─────────────────────────────────────────── */
 .modal-gallery-info {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1.6rem 0.4rem;
+  justify-content: space-between;
+  padding: 0 1.8rem 1rem;
   gap: 1rem;
   flex-shrink: 0;
 }
 
 .modal-gallery-caption {
-  font-size: 0.86rem;
-  color: var(--text-muted, rgba(255,255,255,0.5));
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
   margin: 0;
   flex: 1;
+  line-height: 1.5;
 }
 
 .modal-gallery-counter {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.3);
   white-space: nowrap;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 0.2rem 0.6rem;
   border-radius: 50px;
   letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Miniatures */
+/* ── Miniatures ─────────────────────────────────────────────────────────── */
 .modal-gallery-thumbs {
   display: flex;
   gap: 0.5rem;
-  padding: 0.6rem 1rem 1rem;
+  padding: 1rem 1.8rem 1.4rem;
   overflow-x: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
   flex-shrink: 0;
   scrollbar-width: thin;
-  scrollbar-color: rgba(26,115,232,0.4) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-.modal-gallery-thumbs::-webkit-scrollbar { height: 4px; }
-.modal-gallery-thumbs::-webkit-scrollbar-track { background: transparent; }
-.modal-gallery-thumbs::-webkit-scrollbar-thumb { background: rgba(26,115,232,0.4); border-radius: 4px; }
+.modal-gallery-thumbs::-webkit-scrollbar {
+  height: 3px;
+}
+.modal-gallery-thumbs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
 
+/* Miniature individuelle */
 .modal-thumb {
   flex-shrink: 0;
   width: 90px;
-  height: 58px;
+  aspect-ratio: 16 / 10;
   border-radius: 7px;
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.2s, transform 0.2s, opacity 0.2s;
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
   opacity: 0.5;
 }
 
@@ -256,26 +271,74 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
 .modal-thumb:hover {
-  opacity: 0.85;
+  opacity: 0.8;
   transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .modal-thumb.active {
-  border-color: #1a73e8;
+  border-color: #ff6600;
   opacity: 1;
+  transform: translateY(-2px);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .modal-gallery { padding: 0.8rem; }
-  .modal-gallery-main { min-height: 200px; max-height: 35vh; }
-  #modal-main-img { max-height: 35vh; }
-  .modal-gallery-header { padding: 0.9rem 1rem; }
-  .modal-gallery-viewer { padding: 0.7rem 0.5rem 0.3rem; }
-  .modal-gallery-info { padding: 0.4rem 1rem; }
-  .modal-nav { width: 34px; height: 34px; font-size: 1.4rem; }
-  .modal-thumb { width: 70px; height: 46px; }
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .modal-gallery {
+    padding: 0.8rem;
+    align-items: flex-end;
+  }
+
+  .modal-gallery-container {
+    max-height: 95vh;
+    border-radius: 14px 14px 10px 10px;
+  }
+
+  .modal-gallery-header {
+    padding: 1rem 1.2rem;
+  }
+
+  .modal-gallery-viewer {
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .modal-gallery-main {
+    aspect-ratio: 4 / 3;
+  }
+
+  .modal-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  .modal-gallery-info {
+    padding: 0 1rem 0.8rem;
+  }
+
+  .modal-gallery-thumbs {
+    padding: 0.8rem 1rem 1rem;
+    gap: 0.4rem;
+  }
+
+  .modal-thumb {
+    width: 68px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-gallery {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-gallery-container {
+    border-radius: 14px 14px 0 0;
+    max-height: 92vh;
+  }
 }

@@ -526,3 +526,40 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* =============================================
+   BOUTON GALERIE — lien vers galerie-stage2.html
+   ============================================= */
+.btn-gallery-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(26, 115, 232, 0.08);
+  color: #1a73e8;
+  border: 1px solid rgba(26, 115, 232, 0.25);
+  padding: 0.65rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-gallery-open:hover {
+  background: rgba(26, 115, 232, 0.15);
+  border-color: rgba(26, 115, 232, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-gallery-icon {
+  font-size: 1rem;
+}
+
+.btn-gallery-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
